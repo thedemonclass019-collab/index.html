@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday V  ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* sections */
+
+.section{
+display:none;
+padding:40px 20px;
+max-width:650px;
+margin:auto;
+}
+
+.active{
+display:block;
+animation:fade 1.2s;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+h1{
+font-size:34px;
+letter-spacing:1px;
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+}
+
+/* buttons */
+
+button{
+margin-top:25px;
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4b7d;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* countdown */
+
+#countdown{
+font-size:28px;
+margin-top:20px;
+font-weight:bold;
+}
+
+/* cake */
+
+.cake{
+font-size:110px;
+margin-top:10px;
+}
+
+.candles{
+font-size:35px;
+margin-bottom:-20px;
+}
+
+/* flowers */
+
+.flower{
+position:fixed;
+top:-10px;
+font-size:22px;
+animation:fall 7s linear infinite;
+}
+
+@keyframes fall{
+to{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* hearts */
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:rise 6s linear infinite;
+}
+
+@keyframes rise{
+to{transform:translateY(-110vh);}
+}
+
+/* balloons */
+
+.balloon{
+position:fixed;
+bottom:-50px;
+font-size:40px;
+animation:balloonRise 6s linear forwards;
+}
+
+@keyframes balloonRise{
+to{transform:translateY(-110vh);}
+}
+
+/* confetti */
+
+.confetti{
+position:fixed;
+top:-10px;
+width:8px;
+height:8px;
+animation:fall linear forwards;
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+font-size:28px;
+animation:boom 1s ease-out forwards;
+}
+
+@keyframes boom{
+0%{transform:scale(0)}
+100%{transform:scale(3);opacity:0}
+}
+
+/* glowing text */
+
+.glow{
+text-shadow:0 0 10px rgba(255,255,255,0.8);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SESSION 1 -->
+
+<div id="section1" class="section active">
+
+<h1 class="glow">⏳ A Special Day Is Coming ❤️</h1>
+
+<p>Counting the moments until your beautiful birthday arrives.</p>
+
+<div id="countdown"></div>
+
+<button onclick="nextSection(2)">
+A Beautiful message For The Love of My Life 💌
+</button>
+
+</div>
+
+
+<!-- SESSION 2 -->
+
+<div id="section2" class="section">
+
+<h1 class="glow">💌 My Heart To You</h1>
+
+<p id="letter"></p>
+
+<button onclick="nextSection(3)">
+See Your Birthday Cake Cutiee 🎂
+</button>
+
+</div>
+
+
+<!-- SESSION 3 -->
+
+<div id="section3" class="section">
+
+<h1 class="glow">🎉 Happy Birthday My Love</h1>
+
+<div class="candles" id="candles">🕯️🕯️🕯️</div>
+
+<div class="cake">🎂</div>
+
+<p>Make a wish and cut the cake</p>
+
+<button onclick="cutCake()">
+Cut The Cake 🎉
+</button>
+
+</div>
+
+
+<script>
+
+/* navigation */
+
+function nextSection(num){
+
+document.querySelectorAll(".section").forEach(sec=>{
+sec.classList.remove("active")
+})
+
+document.getElementById("section"+num).classList.add("active")
+
+if(num===2){typeLetter()}
+
+}
+
+/* typing letter */
+
+const text="Happy Birthday my love. You are the most beautiful thing that ever happened to my life. Every moment with you feels magical.Today On your special day, I just want you to know that you are deeply loved, truly cherished, and incredibly important to me.Your smile makes my bad days better, your voice gives me peace, and your presence makes my world complete. 💫 I’m so grateful to have you in my life, and I promise to always stand by your side, through every dream, every challenge, and every moment.. ❤️You are The Light In My Eyes and Peace of My Soul. In this world Nothing is more beautiful then your smile never forget to smile"
+
+let i=0
+
+function typeLetter(){
+
+if(i<text.length){
+
+document.getElementById("letter").innerHTML+=text.charAt(i)
+
+i++
+
+setTimeout(typeLetter,40)
+
+}
+
+}
+
+/* flowers */
+
+function createFlower(){
+
+let flower=document.createElement("div")
+
+flower.className="flower"
+flower.innerHTML="🌸"
+
+flower.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(flower)
+
+setTimeout(()=>{flower.remove()},7000)
+
+}
+
+setInterval(createFlower,700)
+
+/* hearts */
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+heart.innerHTML="💖"
+
+heart.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},6000)
+
+}
+
+setInterval(createHeart,1200)
+
+/* balloons */
+
+function createBalloon(){
+
+let balloon=document.createElement("div")
+
+balloon.className="balloon"
+balloon.innerHTML="🎈"
+
+balloon.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(balloon)
+
+setTimeout(()=>{balloon.remove()},6000)
+
+}
+
+/* confetti */
+
+function createConfetti(){
+
+let confetti=document.createElement("div")
+
+confetti.className="confetti"
+
+confetti.style.left=Math.random()*100+"vw"
+
+confetti.style.backgroundColor=
+["red","yellow","blue","green","pink","purple"][Math.floor(Math.random()*6)]
+
+confetti.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(confetti)
+
+setTimeout(()=>{confetti.remove()},5000)
+
+}
+
+/* fireworks */
+
+function fireworks(){
+
+for(let i=0;i<30;i++){
+
+let fw=document.createElement("div")
+
+fw.className="firework"
+fw.innerHTML="✨"
+
+fw.style.left=Math.random()*100+"%"
+fw.style.top=Math.random()*100+"%"
+
+document.body.appendChild(fw)
+
+setTimeout(()=>{fw.remove()},1000)
+
+}
+
+}
+
+/* cake celebration */
+
+function cutCake(){
+
+document.getElementById("candles").innerHTML="💨💨💨"
+
+for(let i=0;i<120;i++){
+setTimeout(createConfetti,i*15)
+}
+
+for(let i=0;i<20;i++){
+setTimeout(createBalloon,i*200)
+}
+
+fireworks()
+
+}
+
+/* countdown */
+
+var birthday = new Date("April 22, 2026 00:00:00").getTime()
+
+var x=setInterval(function(){
+
+var now=new Date().getTime()
+
+var distance=birthday-now
+
+var days=Math.floor(distance/(1000*60*60*24))
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60))
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60))
+var seconds=Math.floor((distance%(1000*60))/1000)
+
+document.getElementById("countdown").innerHTML=
+days+"d "+hours+"h "+minutes+"m "+seconds+"s"
+
+},1000)
+
+</script>
+
+</body>
+</html>
